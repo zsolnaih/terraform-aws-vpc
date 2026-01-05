@@ -15,7 +15,7 @@ provider "aws" {
 }
 
 module "vpc" {
-  source = "../../../terraform-aws-vpc"
+  source = "github.com/zsolnaih/terraform-aws-vpc?ref=v0.1.0"
 
   vpc_cidr = "10.0.0.0/16"
   public_subnet_cidr = ["10.0.1.0/24", "10.0.2.0/24"]
