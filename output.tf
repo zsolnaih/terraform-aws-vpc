@@ -3,21 +3,21 @@ output "vpc_id" {
 }
 
 output "public_subnets" {
-  value = aws_subnet.public[*].id
+  value = try(aws_subnet.public[*].id, null) 
 }
 
 output "private_subnets" {
-  value = aws_subnet.private[*].id
+  value = try(aws_subnet.private[*].id, null)
 }
 
 output "igw" {
-  value = aws_internet_gateway.this[0].id
+  value = try(aws_internet_gateway.this[0].id, null)
 }
 
 output "eip" {
-  value = aws_eip.this
+  value = try(aws_eip.this, null)
 }
 
 output "nat_gw" {
-  value = aws_nat_gateway.this
+  value = try(aws_nat_gateway.this, null)
 }

@@ -1,9 +1,3 @@
-
-locals {
-  
-}
-
-
 resource "aws_vpc" "this" {
   cidr_block = var.vpc_cidr
   region = var.region
@@ -96,7 +90,7 @@ resource "aws_route_table_association" "private" {
 }
 
 resource "aws_eip" "this" {
-  count   = var.nat_gw ? 1 : 0
+  count   = var.nat_gw && var.single_az_nat ? 1 : 0
   domain  = "vpc"
   region  = var.region
 
@@ -109,11 +103,11 @@ resource "aws_eip" "this" {
 resource "aws_nat_gateway" "this" {
   region        = var.region
   count         = var.nat_gw ? 1 : 0
-  allocation_id = var.single_az_nat == true ? aws_eip.this[0].id : null
-  subnet_id     = var.single_az_nat == true ? aws_subnet.public[0].id : null
+  allocation_id = var.single_az_nat ? aws_eip.this[0].id : null
+  subnet_id     = var.single_az_nat ? aws_subnet.public[0].id : null
 
-  vpc_id            = var.single_az_nat == true ? null : aws_vpc.this.id
-  availability_mode = var.single_az_nat == true ? "zonal" : "regional"
+  vpc_id            = var.single_az_nat ? null : aws_vpc.this.id
+  availability_mode = var.single_az_nat ? "zonal" : "regional"
   
   
   depends_on = [aws_internet_gateway.this]
