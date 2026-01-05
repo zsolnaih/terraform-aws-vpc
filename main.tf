@@ -1,6 +1,7 @@
 resource "aws_vpc" "this" {
   cidr_block = var.vpc_cidr
   region = var.region
+  enable_dns_hostnames = var.enable_dns_hostnames
 
   tags = {
     Name = "${var.name}-vpc"

@@ -55,3 +55,9 @@ variable "nat_gw" {
     error_message = "Need public subnet for NAT GW"
   }
 }
+
+variable "enable_dns_hostnames" {
+  description = "Whether or not the VPC has DNS hostname support"
+  type = bool
+  default = true
+}

@@ -1,5 +1,10 @@
 # Changelog
 
+## [v0.2.0]
+
+### Added
+- Added VPC "enable_dns_hostnames" option
+
 ## [v0.1.0] – Initial Release
 
 ### Added
