@@ -61,3 +61,13 @@ variable "enable_dns_hostnames" {
   type = bool
   default = true
 }
+
+variable "public_subnet_tags" {
+  type = map(string)
+  default = {}
+}
+
+variable "private_subnet_tags" {
+  type = map(string)
+  default = {} 
+}

@@ -41,6 +41,8 @@ If private subnets exist but `nat_gw = false`, no default internet route is crea
 | `private_subnet_cidr` | `list(string)` | `[]` | CIDR blocks for private subnets (must match `private_subnet` length) | no |
 | `nat_gw` | `bool` | `false` | Whether to create a NAT Gateway | no |
 | `single_az_nat` | `bool` | `false` | If `true`, create a zonal NAT Gateway in the first public subnet. If `false`, use “regional” mode | no |
+| `public_subnet_tags` | `map(string)` | `{}` | Additional tags for Public Subnets | no |
+| `private_subnet_tags` | `map(string)` | `{}` | Additional tags for Private Subnets | no |
 
 ### Validations
 
