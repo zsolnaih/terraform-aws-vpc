@@ -1,5 +1,10 @@
 # Changelog
 
+## [v0.3.0]
+
+### Added
+- Added Variables to manage subnet tags
+
 ## [v0.2.0]
 
 ### Added
